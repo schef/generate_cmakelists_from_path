@@ -3,13 +3,8 @@
 import glob
 import subprocess
 
-print("##### GENERATE_MAKEFILESOURCE #####")
-print()
-
+ignore_path = ["cmake-build-debug"] # folder you want to ignore
 cmakelists_path = "CMakeLists.txt"
-files_found = []
-folders_found = []
-ignore_path = ["cmake-build-debug"] # stavi foldere koji ne zelis inkludat u search
 
 def run_bash_cmd(cmd):
     output = None
@@ -55,6 +50,12 @@ def get_project_folder_name():
     return output.split('/')[-1]
 
 if __name__ == "__main__":
+    print("##### GENERATE_MAKEFILESOURCE #####")
+    print()
+
+    files_found = []
+    folders_found = []
+
     print("##### found source files #####")
     find_files('./**/*.c', files_found)
     find_files('./**/*.cpp', files_found)
